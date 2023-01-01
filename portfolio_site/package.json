@@ -1,0 +1,17 @@
+{
+  "name": "portfolio_site",
+  "version": "0.0.1",
+  "description": "glu portfolio site / marketing site / splash page",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --names serve,reload,tailwind 'serve public' 'livereload public' 'pnpm build --watch'",
+    "build": "tailwindcss -i style.css -o public/style.generated.css"
+  },
+  "author": "Jack DeVries <jdevries3133@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "livereload": "^0.9.3",
+    "tailwindcss": "^3.2.4"
+  }
+}
