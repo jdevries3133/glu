@@ -4,7 +4,7 @@
   "description": "glu portfolio site / marketing site / splash page",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently --names serve,reload,tailwind 'serve public' 'livereload public' 'pnpm build --watch'",
+    "dev": "concurrently --names serve,reload,tailwind 'serve -l 8000 public' 'livereload public' 'pnpm build --watch'",
     "build": "tailwindcss -i style.css -o public/style.generated.css"
   },
   "author": "Jack DeVries <jdevries3133@gmail.com>",
