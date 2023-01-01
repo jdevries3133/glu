@@ -31,25 +31,21 @@ TAG?=$(shell git describe --tags)
 CONTAINER=$(DOCKER_ACCOUNT)/$(CONTAINER_NAME):$(TAG)
 
 
-.PHONY: run
-run: build
-	docker run -d -p 8000:80 -v $(PWD)/public:/usr/share/nginx/html $(CONTAINER)
-
-
-.PHONY: build
-build:
-	pnpm build --minify
-	docker build -t $(CONTAINER) .
-
-
 .PHONY: push
 push:
+	pnpm build --minify
 	docker buildx build --platform linux/amd64 --push -t $(CONTAINER) .
+
+
+.PHONY: setup-ci
+setup-ci:
+	pnpm install --frozen-lockfile
+	terraform init -input=false
 
 
 .PHONY: deploy
 deploy: push
 ifdef CI
-	terraform init -input=false
+	make setup-ci
 endif
 	terraform apply -auto-approve
