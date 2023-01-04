@@ -29,5 +29,5 @@ module "container-deployment" {
 
   app_name = "glu-portfolio"
   container = "jdevries3133/glu_portfolio:${data.external.git_describe.result.output}"
-  domain = "glu.jackdevries.com"
+  domain = "glu.education"
 }
