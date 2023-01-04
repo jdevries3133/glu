@@ -15,32 +15,52 @@
     <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
-    <div class="px-4 h-screen bg-gradient-to-br from-blue-200 to-blue-100">
-      <div class="bg-green-100 rounded-b-xl shadow">
+    <main class="px-4 min-h-screen bg-gradient-to-br from-blue-200 to-blue-100">
+      <header class="mb-4 text-center bg-green-100 rounded-b-xl shadow">
         <img class="my-2 inline w-24 h-24" src="/static/glue.png" />
         <p class="inline font-xl font-bold">
           Glu: <span class="font-light">for all things edu</span>
         </p>
+      </header>
+      <div class="flex justify-center items-center">
+        <div class="max-w-prose flex flex-col gap-8">
+          <div
+            class="p-4 transition rounded hover:shadow flex items-center justify-center gap-2 hover:bg-gray-50 bg-opacity-30"
+          >
+            <p class="text-xl">
+              <span class="font-bold">Glu</span> is a space-age SIS, but that's
+              just the tip of the iceburg
+            </p>
+            <img class="w-24 h-24 md:w-36 md:h-36 rounded-lg" src="/static/iceburg.svg" />
+          </div>
+          <div
+            class="p-4 transition rounded hover:shadow flex items-center justify-center gap-2 hover:bg-blue-50 bg-opacity-30"
+          >
+            <img
+              class="w-24 h-24 md:w-36 md:h-36 rounded-lg"
+              src="/static/goog_classroom.webp"
+            />
+            <p class="text-xl">
+              <span class="font-bold">Glu</span> is a SIS built from the ground
+              up for integration with Google Classroom
+            </p>
+          </div>
+          <div
+            class="p-4 transition rounded hover:shadow flex items-center justify-center gap-2 hover:bg-blue-50 bg-opacity-30"
+          >
+            <img class="w-24 h-24 md:w-36 md:h-36 rounded-lg" src="/static/glue.png" />
+            <div class="prose">
+              <p class="text-xl">
+                <span class="font-bold">Glu</span> is work-in-progress 😄
+              </p>
+              <a href="mailto:jdevries3133@gmail.com">
+                <p class="text-xl">Reach out to me personally to learn more</p>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div
-        class="my-24 p-4 transition rounded hover:shadow flex items-center justify-center gap-2 hover:bg-gray-50 bg-opacity-30"
-      >
-        <p class="text-xl">
-          <span class="font-bold">Glu</span> is a space-age SIS, but that's just
-          the tip of the iceburg
-        </p>
-        <img class="w-36 h-36 rounded-lg" src="/static/iceburg.svg" />
-      </div>
-      <div
-        class="my-24 p-4 transition rounded hover:shadow flex items-center justify-center gap-2 hover:bg-blue-50 bg-opacity-30"
-      >
-        <img class="w-36 h-36 rounded-lg" src="/static/goog_classroom.webp" />
-        <p class="text-xl">
-          <span class="font-bold">Glu</span> is a SIS built from the ground up
-          for integration with Google Classroom
-        </p>
-      </div>
-    </div>
+    </main>
     <script>
       if (window.location.origin.includes("localhost")) {
         document.write(

@@ -10,6 +10,7 @@
   "author": "Jack DeVries <jdevries3133@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.8",
     "concurrently": "^7.6.0",
     "livereload": "^0.9.3",
     "tailwindcss": "^3.2.4"
