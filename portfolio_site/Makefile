@@ -39,14 +39,13 @@ push:
 
 .PHONY: setup-ci
 setup-ci:
+ifdef CI
 	npm install --global pnpm
-	pnpm install --frozen-lockfile
+	pnpm install
 	terraform init -input=false
+endif
 
 
 .PHONY: deploy
-deploy: push
-ifdef CI
-	make setup-ci
-endif
+deploy: setup-ci push
 	terraform apply -auto-approve
