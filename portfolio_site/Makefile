@@ -39,6 +39,7 @@ push:
 
 .PHONY: setup-ci
 setup-ci:
+	npm install --global pnpm
 	pnpm install --frozen-lockfile
 	terraform init -input=false
 
