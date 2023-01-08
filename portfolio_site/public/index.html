@@ -15,52 +15,79 @@
     <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
-    <main class="px-4 min-h-screen bg-gradient-to-br from-blue-200 to-blue-100">
-      <header class="mb-4 text-center bg-green-100 rounded-b-xl shadow">
-        <img class="my-2 inline w-24 h-24" src="/static/glue.png" />
-        <p class="inline font-xl font-bold">
-          Glu: <span class="font-light">for all things edu</span>
-        </p>
-      </header>
+    <div class="bg-gradient-to-br from-blue-200 to-blue-100 min-h-screen">
       <div class="flex justify-center items-center">
-        <div class="max-w-prose flex flex-col gap-8">
-          <div
-            class="p-4 transition rounded hover:shadow flex items-center justify-center gap-2 hover:bg-gray-50 bg-opacity-30"
-          >
-            <p class="text-xl">
-              <span class="font-bold">Glu</span> is a space-age SIS, but that's
-              just the tip of the iceburg
-            </p>
-            <img class="w-24 h-24 md:w-36 md:h-36 rounded-lg" src="/static/iceburg.svg" />
-          </div>
-          <div
-            class="p-4 transition rounded hover:shadow flex items-center justify-center gap-2 hover:bg-blue-50 bg-opacity-30"
-          >
-            <img
-              class="w-24 h-24 md:w-36 md:h-36 rounded-lg"
-              src="/static/goog_classroom.webp"
-            />
-            <p class="text-xl">
-              <span class="font-bold">Glu</span> is a SIS built from the ground
-              up for integration with Google Classroom
-            </p>
-          </div>
-          <div
-            class="p-4 transition rounded hover:shadow flex items-center justify-center gap-2 hover:bg-blue-50 bg-opacity-30"
-          >
-            <img class="w-24 h-24 md:w-36 md:h-36 rounded-lg" src="/static/glue.png" />
-            <div class="prose">
+        <header
+          class="flex flex-col sm:flex-row items-center mb-4 px-6 text-center bg-green-100 rounded-b-xl shadow"
+        >
+          <img class="my-2 inline w-24 h-24" src="/static/glue.png" />
+          <p class="inline font-xl font-bold">
+            Glu: <span class="font-light">for all things edu</span>
+          </p>
+        </header>
+      </div>
+      <article
+        class="px-4 flex items-center justify-center flex-col min-h-screen"
+      >
+        <div class="flex flex-col justify-center items-center">
+          <div class="max-w-prose flex flex-col gap-8">
+            <div
+              class="p-4 transition prose rounded hover:shadow flex items-center justify-center gap-2 hover:bg-gray-50 bg-opacity-30"
+            >
               <p class="text-xl">
-                <span class="font-bold">Glu</span> is work-in-progress 😄
+                <span class="font-bold">glu</span> is the missing middle of Ed
+                Tech.
               </p>
-              <a href="mailto:jdevries3133@gmail.com">
-                <p class="text-xl">Reach out to me personally to learn more</p>
-              </a>
+            </div>
+            <div class="hidden md:block h-24 overflow-visible">
+              <img class="not-prose -translate-y-16" src="/static/shape.svg" />
             </div>
           </div>
+          <div
+            class="p-4 transition prose rounded hover:shadow flex flex-wrap items-center justify-center hover:bg-gray-50 bg-opacity-30 md:translate-x-14 md:-translate-y-3"
+          >
+            <p class="text-xl">
+              On the one hand, you have a bunch of awesome tech that teachers,
+              parents, school administrators, and students all love and enjoy!
+            </p>
+          </div>
+          <div
+            class="p-4 md:max-w-md rounded grid grid-cols-2 md:grid-cols-3 gap-4 border border-black"
+          >
+            <img class="h-24" src="/static/edpuzzle.webp" />
+            <img class="h-24" src="/static/goog_classroom.webp" />
+            <img class="h-24" src="/static/kahoot.webp" />
+            <img class="h-24" src="/static/quizziz.webp" />
+            <img class="h-24" src="/static/brainpop.webp" />
+            <img class="h-24" src="/static/nearpod.webp" />
+          </div>
         </div>
+      </article>
+    </div>
+    <article
+      class="pt-12 border-t-8 flex items-center justify-center flex-col border-black bg-gradient-to-br from-red-200 to-yellow-100"
+    >
+      <div
+        class="transition prose rounded hover:shadow flex flex-wrap items-center justify-center hover:bg-gray-50 bg-opacity-30 md:translate-x-14 md:-translate-y-3"
+      >
+        <p class="text-xl">
+          On the other, antiquated Student Information Systems, stone-age state
+          reporting portals, and Victorian era manual processes integrate these
+          high-tech systems together.
+        </p>
       </div>
-    </main>
+
+      <div class="hidden md:block overflow-visible h-[26rem]">
+        <img
+          class="not-prose -translate-x-6 -translate-y-8"
+          src="/static/sad_shape.svg"
+        />
+      </div>
+      <p class="w-40 -translate-x-24">
+        Time is wasted, information is lost, collaborations are missed,
+        education ails
+      </p>
+    </article>
     <script>
       if (window.location.origin.includes("localhost")) {
         document.write(
