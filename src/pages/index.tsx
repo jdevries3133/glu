@@ -14,7 +14,7 @@ const Home: NextPage = () => (
             <Image alt="glu logo" fill src="/static/glue.png" />
           </div>
           <p className="font-xl inline font-bold">
-            Glu: <span className="font-light">for all things edu</span>
+            Glu: <span className="font-light">for all things edu!</span>
           </p>
         </header>
       </div>
