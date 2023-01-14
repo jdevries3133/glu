@@ -14,6 +14,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <SessionProvider session={session}>
       <Head>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
