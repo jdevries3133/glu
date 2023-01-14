@@ -14,6 +14,7 @@ const Test = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <h1>Test Page</h1>
+      <h1>Preview test</h1>
       <button>Click me to add a row to the database</button>
       <button onClick={() => mutation.mutate()} className="form-input">
         click me
