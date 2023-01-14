@@ -7,12 +7,16 @@ export const exampleRouter = createTRPCRouter({
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
       return {
-        greeting: `Hello ${input.text}`,
+        greeting: input.text ? `Hello ${input.text}` : null,
       };
     }),
 
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.example.findMany();
+  }),
+
+  makeOne: publicProcedure.mutation(async ({ ctx }) => {
+    return ctx.prisma.example.create({ data: {} });
   }),
 
   getSecretMessage: protectedProcedure.query(() => {
