@@ -1,5 +1,4 @@
 import { signIn, signOut, useSession } from "next-auth/react";
-import { LoadingSpinner } from "./loading";
 
 export const AuthBtn = () => {
   const { status: authStatus } = useSession();
@@ -16,7 +15,7 @@ export const AuthBtn = () => {
   };
 
   return authStatus === "loading" ? (
-    <LoadingSpinner />
+    <span>loading</span>
   ) : (
     <button
       onClick={authFn}
