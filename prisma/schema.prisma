@@ -22,11 +22,13 @@ model Account {
     provider          String
     providerAccountId String
     refresh_token     String?
-    access_token      String?
+    // google auth strings are quite long;
+    // see https://developers.google.com/identity/protocols/oauth2#size
+    access_token      String? @db.VarChar(2049)
+    id_token          String? @db.VarChar(2049)
     expires_at        Int?
     token_type        String?
     scope             String?
-    id_token          String?
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 

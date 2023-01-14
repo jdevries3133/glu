@@ -1,5 +1,3 @@
-import trpc from "@trpc/next";
-
 import { api } from "../utils/api";
 
 const Test = () => {
@@ -18,6 +16,11 @@ const Test = () => {
       <button onClick={() => mutation.mutate()} className="form-input">
         click me
       </button>
+      {mutation.error?.data?.httpStatus && (
+        <p className="text-red-500">
+          Failed with status {mutation.error.data.httpStatus}
+        </p>
+      )}
       <div>
         {query.data &&
           query.data.map((i) => (
