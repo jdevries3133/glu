@@ -1,10 +1,9 @@
 import { type NextPage } from "next";
-import { signIn, signOut, useSession } from "next-auth/react";
-
 import Image from "next/image";
 
+import { AuthBtn } from "components/authBtn";
+
 const Home: NextPage = () => {
-  const { status: authStatus } = useSession();
   return (
     <>
       <div
@@ -24,20 +23,10 @@ const Home: NextPage = () => {
             </p>
           </header>
           <div
-            className="fixed top-0 right-0 rounded-bl-xl bg-lime-300
+            className="absolute top-0 right-0 rounded-bl-xl bg-lime-300
         p-2 shadow"
           >
-            {authStatus === "loading" ? (
-              <span>loading</span>
-            ) : (
-              <button
-                onClick={authStatus === "authenticated" ? signOut : signIn}
-                className="form-input rounded-xl bg-emerald-300 transition
-          hover:bg-white"
-              >
-                Sign {authStatus === "authenticated" ? "Out" : "In"}
-              </button>
-            )}
+            <AuthBtn />
           </div>
         </div>
         <article
