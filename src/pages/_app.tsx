@@ -6,11 +6,13 @@ import { api } from "../utils/api";
 
 import "../styles/globals.css";
 import Head from "next/head";
+import { useSetupTwElements } from "hooks/useSetupTwElements";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  useSetupTwElements();
   return (
     <SessionProvider session={session}>
       <Head>
