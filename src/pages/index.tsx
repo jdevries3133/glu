@@ -33,8 +33,8 @@ const Home: NextPage = () => (
                 Ed Tech.
               </p>
             </div>
-            <div className="relative h-12 -translate-y-14 md:h-48">
-              <div className="not-prose relative h-72 md:w-full">
+            <div className="relative h-12 -translate-y-12">
+              <div className="not-prose relative h-28 md:w-[38rem]">
                 <Image
                   fill
                   alt="curvy shape decoration thingy"
@@ -54,9 +54,9 @@ const Home: NextPage = () => (
             </p>
           </div>
           <div
-            className="relative grid grid-cols-2 gap-4 rounded
-7           bg-emerald-600 shadow-2xl shadow-indigo-800
-          p-4 md:max-w-md md:grid-cols-3"
+            className="7 relative grid grid-cols-2 gap-4
+rounded           bg-emerald-600 p-4 shadow-2xl
+          shadow-indigo-800 md:max-w-md md:grid-cols-3"
           >
             <div className="relative h-24 w-24">
               <Image fill alt="edpuzzle logo" src="/static/edpuzzle.webp" />
@@ -85,8 +85,8 @@ const Home: NextPage = () => (
       </article>
     </div>
     <article
-      className="flex flex-col items-center justify-center border-t-8
-    border-black bg-gradient-to-br from-red-200 to-yellow-100"
+      className="flex flex-col items-center justify-center border-t-8 border-black
+    bg-gradient-to-br from-red-200 to-yellow-100 p-4"
     >
       <div
         className="prose mt-8 flex flex-wrap items-center justify-center
