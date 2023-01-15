@@ -9,7 +9,7 @@ import { contactRouter } from "./routers/contact";
  */
 export const appRouter = createTRPCRouter({
   example: exampleRouter,
-  contact: contactRouter
+  contact: contactRouter,
 });
 
 // export type definition of API

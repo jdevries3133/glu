@@ -79,7 +79,9 @@ export const ContactForm = () => {
           id="email"
           {...register("email")}
         />
-        <button className="my-2 rounded bg-slate-800 text-slate-100 hover:bg-slate-700 p-2">Submit</button>
+        <button className="my-2 rounded bg-slate-800 p-2 text-slate-100 hover:bg-slate-700">
+          Submit
+        </button>
       </div>
     </form>
   );

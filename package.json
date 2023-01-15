@@ -9,7 +9,7 @@
     "dev:next": "next dev",
     "postinstall": "prisma generate",
     "start": "next start",
-    "lint": "next lint && prettier --check src",
+    "lint": "next lint -f unix && prettier --check src",
     "fmt": "prettier -w src"
   },
   "dependencies": {

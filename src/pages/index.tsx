@@ -83,7 +83,7 @@ rounded           bg-emerald-600 p-4 shadow-2xl
     >
       <div
         className="prose mt-8 flex flex-wrap items-center justify-center
-      rounded bg-opacity-30 transition hover:bg-gray-50 hover:shadow p-4"
+      rounded bg-opacity-30 p-4 transition hover:bg-gray-50 hover:shadow"
       >
         <p className="text-xl">
           On the other, antiquated Student Information Systems, stone-age state
