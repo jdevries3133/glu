@@ -1,29 +1,43 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { LoadingSpinner } from "./loadingSpinner";
 
-export const AuthBtn = () => {
+export const AuthBtn: React.FC<{
+  className?: string;
+}> = ({ className }) => {
   const { status: authStatus } = useSession();
 
-  const authFn = () => {
-    switch (authStatus) {
-      case "authenticated":
-        signOut().catch((e) => console.error(e));
-        break;
-      case "unauthenticated":
-        signIn().catch((e) => console.error(e));
-        break;
-    }
-  };
+  const commonBtnStyles = "form-input mx-4 rounded-xl transition";
 
-  return authStatus === "loading" ? (
-    <LoadingSpinner />
-  ) : (
-    <button
-      onClick={authFn}
-      className="form-input rounded-xl bg-emerald-300 transition
-          hover:bg-white"
-    >
-      Sign {authStatus === "authenticated" ? "Out" : "In"}
-    </button>
-  );
+  switch (authStatus) {
+    case "loading":
+      return <LoadingSpinner />;
+
+    case "unauthenticated":
+      return (
+        <button
+          onClick={() => {
+            signIn().catch((e) => console.error(e));
+          }}
+          className={`${commonBtnStyles} bg-indigo-200 hover:bg-indigo-300 ${
+            className || ""
+          }`}
+        >
+          Sign In
+        </button>
+      );
+
+    case "authenticated":
+      return (
+        <button
+          onClick={() => {
+            signOut().catch((e) => console.error(e));
+          }}
+          className={`${commonBtnStyles} bg-red-200 hover:bg-red-300 ${
+            className || ""
+          }`}
+        >
+          Sign Out
+        </button>
+      );
+  }
 };

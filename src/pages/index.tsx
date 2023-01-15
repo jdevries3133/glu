@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Image from "next/image";
 
-import { AuthBtn } from "components/authBtn";
+import { DefaultHeader } from "components/nav";
 
 const Home: NextPage = () => {
   return (
@@ -10,25 +10,7 @@ const Home: NextPage = () => {
         className="min-h-screen bg-gradient-to-br from-sky-100 to-indigo-500
     pb-12"
       >
-        <div className="flex items-center justify-center">
-          <header
-            className="relative mb-4 flex flex-col items-center
-        rounded-b-xl bg-emerald-300 px-6 text-center shadow sm:flex-row"
-          >
-            <div className="relative my-2 h-24 w-24">
-              <Image alt="glu logo" fill src="/static/glue.png" />
-            </div>
-            <p className="font-xl inline font-bold">
-              Glu: <span className="font-light">for all things edu!</span>
-            </p>
-          </header>
-          <div
-            className="absolute top-0 right-0 rounded-bl-xl bg-lime-300
-        p-2 shadow"
-          >
-            <AuthBtn />
-          </div>
-        </div>
+        <DefaultHeader />
         <article
           className="mb-4 flex min-h-screen flex-col items-center
       justify-center px-4"
