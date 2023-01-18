@@ -113,6 +113,16 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
 });
 
 /**
+ * Middleware to check if the user is an administrator
+ */
+const enforceUserIsAdmin = t.middleware(({ ctx, next }) => {
+  if (!ctx?.session?.user?.isAdmin) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  return next({ ctx });
+});
+
+/**
  * Protected (authed) procedure
  *
  * If you want a query or mutation to ONLY be accessible to logged in users, use
@@ -122,3 +132,8 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+
+/**
+ * Admin-Only procedure
+ */
+export const adminProcedure = t.procedure.use(enforceUserIsAdmin);

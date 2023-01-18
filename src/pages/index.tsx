@@ -116,7 +116,7 @@ rounded           bg-emerald-600 p-4 shadow-2xl
           depend on.
         </p>
       </div>
-      <div className="mt-12">
+      <div className="my-12">
         <ContactForm />
       </div>
     </article>
