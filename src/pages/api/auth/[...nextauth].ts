@@ -14,12 +14,11 @@ export const authOptions: NextAuthOptions = {
         session.user.id = user.id;
 
         // typescript you need to chill my man
-        if ("isAdmin" in user && typeof user.isAdmin === 'boolean') {
+        if ("isAdmin" in user && typeof user.isAdmin === "boolean") {
           session.user.isAdmin = user.isAdmin;
         } else {
           session.user.isAdmin = false;
         }
-
       }
       return session;
     },
