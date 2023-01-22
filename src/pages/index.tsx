@@ -28,11 +28,7 @@ const Home: NextPage = () => (
             </div>
             <div className="relative h-12 -translate-y-12">
               <div className="not-prose relative h-28 md:w-[38rem]">
-                <Image
-                  fill
-                  alt="curvy shape decoration thingy"
-                  src="/static/shape.svg"
-                />
+                <Image fill alt="" src="/static/shape.svg" />
               </div>
             </div>
           </div>
@@ -96,7 +92,7 @@ rounded           bg-emerald-600 p-4 shadow-2xl
         className="not-prose relative h-[16rem] w-[20rem] overflow-visible md:h-[34rem]
       md:w-full md:-translate-x-16"
       >
-        <Image fill alt="sad shape" src="/static/sad_shape.svg" sizes="100vw" />
+        <Image fill alt="" src="/static/sad_shape.svg" sizes="100vw" />
       </div>
 
       <p className="w-40 -translate-y-24 md:-translate-x-32">
@@ -114,6 +110,17 @@ rounded           bg-emerald-600 p-4 shadow-2xl
         <p>
           We want to empower K-12 stakeholders to take control of the tech they
           depend on.
+        </p>
+        <div className="flex h-52 justify-center">
+          <div className="relative h-64 w-24 -translate-y-14">
+            <Image fill alt="" src="/static/neutralShape.svg" />
+          </div>
+        </div>
+        <p className="mb-6 sm:text-center">That&apos;s a big dream, though!</p>
+        <p>
+          For now, we&apos;re making some neat little educational games for
+          teachers and students, and hoping to get to know you and your Ed Tech
+          pain, so that we can support a better Ed Tech future.
         </p>
       </div>
       <div className="my-12">

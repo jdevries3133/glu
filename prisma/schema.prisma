@@ -15,11 +15,12 @@ model Example {
 }
 
 model ContactFormSubmission {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  name      String
-  email     String?
-  phone     String?
+  id         String   @id @default(cuid())
+  createdAt  DateTime @default(now())
+  name       String
+  email      String?
+  phone      String?
+  subscribed Boolean  @default(true)
 }
 
 // Necessary for Next auth

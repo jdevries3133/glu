@@ -41,7 +41,7 @@ export const ContactForm = () => {
     >
       <div className="prose mb-4">
         <h1 className="mb-3 pt-3 text-center text-xl">Want Updates?</h1>
-        <p>
+        <p className="sm:text-lg">
           Reach out, and we&apos;ll be more than happy to learn about your Ed
           Tech woes and start building out solutions for you!
         </p>
@@ -79,7 +79,17 @@ export const ContactForm = () => {
           id="email"
           {...register("email")}
         />
-        <button className="my-2 rounded bg-slate-800 p-2 text-slate-100 hover:bg-slate-700">
+        <div className="flex items-center justify-center text-right">
+          <label htmlFor="subscribe">Recieve regular email updates?</label>
+          <input
+            className="form-checkbox m-4 p-2"
+            defaultChecked={true}
+            type="checkbox"
+            id="subscribe"
+            {...register("subscribed")}
+          />
+        </div>
+        <button className="my-2 block rounded bg-slate-800 p-2 text-slate-100 hover:bg-slate-700">
           Submit
         </button>
       </div>

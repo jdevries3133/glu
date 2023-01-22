@@ -6,10 +6,12 @@ import { api } from "utils/api";
 import DataTableBase from "components/dataTable";
 
 const cols: {
+  id?: string;
   name: string;
   selector: (r: ContactFormSubmission) => number | string;
 }[] = [
   {
+    id: "name",
     name: "Name",
     selector: (r) => r.name,
   },
@@ -25,6 +27,10 @@ const cols: {
     name: "Created At",
     selector: (r) => r.createdAt.toLocaleString(),
   },
+  {
+    name: "Subscribed",
+    selector: (r) => (r.subscribed ? "yes" : "no"),
+  },
 ];
 
 export default function Admin() {
@@ -36,7 +42,7 @@ export default function Admin() {
   return data ? (
     <>
       <h1 className="font-bold">Contact Form Submissions</h1>
-      <DataTableBase columns={cols} data={data} />
+      <DataTableBase columns={cols} data={data} defaultSortFieldId="name" />
     </>
   ) : null;
 }
