@@ -55,11 +55,16 @@ export const playerRouter = createTRPCRouter({
         throw new Error("invalid name choice");
       }
 
-      const user = await ctx.prisma.gamePlayer.create({
-        data: {
-          name: nameChoice.value,
-        },
-      });
+      const user = await (input.playerId
+        ? ctx.prisma.player.update({
+            where: { id: input.playerId },
+            data: { name: nameChoice.value },
+          })
+        : ctx.prisma.player.create({
+            data: {
+              name: nameChoice.value,
+            },
+          }));
 
       return user;
     }),

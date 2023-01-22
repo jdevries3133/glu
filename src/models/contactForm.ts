@@ -14,5 +14,5 @@ export const contactFormSchema = z.object({
       .max(100, "email is too long")
       .optional()
   ),
-  subscribed: z.boolean()
+  subscribed: z.boolean(),
 });
