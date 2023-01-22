@@ -25,11 +25,23 @@ export const gptGuessingGameRouter = createTRPCRouter({
         },
       });
 
+      // TODO: upsert game; keep track of game sessions
+      const tmpGame = await ctx.prisma.gamePlay.create({
+        data: {
+          type: "GPT_GUESS",
+          player: {
+            connect: player,
+          },
+        },
+      });
+
       // TODO: call openapi here!
 
       const guess = await ctx.prisma.gptGuessGameGuess.create({
         data: {
-          playerId: player.id,
+          game: {
+            connect: tmpGame,
+          },
           playerGuess: input.playerGuess,
           gptGuess: "<temp>",
         },

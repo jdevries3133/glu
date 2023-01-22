@@ -11,7 +11,8 @@
     "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint -f unix && prettier --check src",
-    "check": "npm run lint && npm run test -- --run",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run lint && npm run test -- --run",
     "fmt": "prettier -w src"
   },
   "dependencies": {

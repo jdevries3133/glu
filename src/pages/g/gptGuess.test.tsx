@@ -3,7 +3,7 @@ import { vi } from "vitest";
 import GptGuess from "./gptGuess";
 
 // why this needs to be a relative path is a mystery to me
-vi.mock('../../hooks/usePlayer.ts')
+vi.mock("../../hooks/usePlayer.ts");
 
 describe("GptGuessGame", () => {
   beforeEach(() => {
