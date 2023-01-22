@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { vi } from "vitest";
-import GptGuess from "./gptGuess";
+import GptGuess from "pages/g/gptGuess";
 
 // why this needs to be a relative path is a mystery to me
-vi.mock("../../hooks/usePlayer.ts");
+vi.mock("../hooks/usePlayer");
 
 describe("GptGuessGame", () => {
   beforeEach(() => {
