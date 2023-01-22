@@ -38,7 +38,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <Component {...pageProps} />
+      <div className="min-h-screen bg-yellow-50 bg-opacity-10">
+        <Component {...pageProps} />
+      </div>
     </SessionProvider>
   );
 };

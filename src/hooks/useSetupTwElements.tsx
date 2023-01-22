@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { rejection } from "utils/rejection";
 
 /**
  * Client-side initialization for tw-elements; should be used exactly once in
@@ -9,6 +10,6 @@ export const useSetupTwElements = () => {
     const use = async () => {
       (await import("tw-elements")).default;
     };
-    use().catch((e) => console.error(e));
+    use().catch(rejection);
   }, []);
 };
