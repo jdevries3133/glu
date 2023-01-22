@@ -1,4 +1,5 @@
 import { signIn, signOut, useSession } from "next-auth/react";
+import { rejection } from "utils/rejection";
 import { LoadingSpinner } from "./loadingSpinner";
 
 export const AuthBtn: React.FC<{
@@ -16,7 +17,7 @@ export const AuthBtn: React.FC<{
       return (
         <button
           onClick={() => {
-            signIn().catch((e) => console.error(e));
+            signIn().catch(rejection);
           }}
           className={`${commonBtnStyles} bg-indigo-200 hover:bg-indigo-300 ${
             className || ""
@@ -30,7 +31,7 @@ export const AuthBtn: React.FC<{
       return (
         <button
           onClick={() => {
-            signOut().catch((e) => console.error(e));
+            signOut().catch(rejection);
           }}
           className={`${commonBtnStyles} bg-red-200 hover:bg-red-300 ${
             className || ""

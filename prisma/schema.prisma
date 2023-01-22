@@ -69,3 +69,57 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+// --------------------- "Quick Game" data  -----------------------------------
+
+// Possibly anonymous, possible (in the future) related to a student account.
+model GamePlayer {
+  id       String     @id @default(cuid())
+  name     String?
+  GamePlay GamePlay[]
+}
+
+// For now, quick game players are anonymous. They'll choose a silly name from
+// a set of silly words that we define. These silly names will be generated
+// from a word list, and we'll store them here so there's no chance of funny
+// business in the server <-> client round trip. We could link this table to
+// GamePlay by reference, but prefer to keep it decoupled since the idea is
+// to eventually migrate to user-provided names. So, the application will
+// handle copying strings from this table into GamePlayer.name
+model PlayerNameChoice {
+  id    String @id @default(cuid())
+  value String @unique
+}
+
+enum GameType {
+  GPT_GUESS
+}
+
+model GamePlay {
+  id   String   @id @default(cuid())
+  type GameType
+
+  playerId          String
+  player            GamePlayer          @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  GptGuessGameScore GptGuessGameScore?
+  GptGuessGameGuess GptGuessGameGuess[]
+}
+
+// *** GPT Guess Game Data ***
+
+model GptGuessGameScore {
+  gameId String   @unique
+  game   GamePlay @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  numGuesses          Int
+  playDurationSeconds Int
+}
+
+model GptGuessGameGuess {
+  id          String @id @default(cuid())
+  playerGuess String
+  gptGuess    String
+
+  gameId String
+  game   GamePlay @relation(fields: [gameId], references: [id], onDelete: Cascade)
+}
