@@ -27,7 +27,7 @@ export const completerFactory =
   (model: string, opts?: { maxTokens?: number }) => async (prompt: string) => {
     return (
       await openai.createCompletion({
-        max_tokens: opts?.maxTokens || 1,
+        // max_tokens: opts?.maxTokens || 1,
         model,
         prompt: prompt,
       })
