@@ -35,5 +35,6 @@ export const completerFactory =
   };
 
 export const gptGameCompleter = completerFactory(
-  "curie:ft-personal-2023-01-23-00-40-24"
+  "curie:ft-personal-2023-01-23-00-40-24",
+  {maxTokens: 10}
 );
