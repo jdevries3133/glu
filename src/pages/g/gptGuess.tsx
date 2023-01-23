@@ -56,14 +56,14 @@ export default function GptGuessPage() {
           >
             {guess.data?.gptFailed && (
               <div className="prose text-sm">
-                <p className="text-red-800 bg-red-100 inline p-1 rounded">
+                <p className="inline rounded bg-red-100 p-1 text-red-800">
                   Oops! You&apos;re smarter than GPT!
                 </p>
-                <div className="mt-2 bg-green-100 text-green-900 p-1 rounded">
-                <p>
-                  Try again with a different word. GPT left us on read after
-                  that last guess - how rude!
-                </p>
+                <div className="mt-2 rounded bg-green-100 p-1 text-green-900">
+                  <p>
+                    Try again with a different word. GPT left us on read after
+                    that last guess - how rude!
+                  </p>
                 </div>
               </div>
             )}

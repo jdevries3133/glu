@@ -38,7 +38,6 @@ export const gptGuessingGameRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ ctx: { prisma }, input }) => {
-
       /// Select the current game ///
       const game = await prisma.game.findUnique({
         where: { id: input.gameId },
@@ -50,23 +49,23 @@ export const gptGuessingGameRouter = createTRPCRouter({
       const lastGuess = await getLastGuess(prisma, game);
       if (!lastGuess) {
         // initialize the game by asking gpt for a random word.
-        const gptStarter = await gptGameCompleter('Choose a random word: ');
+        const gptStarter = await gptGameCompleter("Choose a random word: ");
         if (!gptStarter || gptStarter.length === 0) {
-          console.error('GPT failed to provide a random starting word');
+          console.error("GPT failed to provide a random starting word");
           return {
             gameComplete: false,
             guess: null,
-            gptFailed: true
-          }
+            gptFailed: true,
+          };
         }
         const guess = await prisma.gptGuessGameGuess.create({
           data: {
             playerGuess: input.guess,
             gptGuess: gptStarter,
-            gameId: input.gameId
-          }
+            gameId: input.gameId,
+          },
         });
-        return { guess, gameComplete: false, gptFailed: false }
+        return { guess, gameComplete: false, gptFailed: false };
       }
 
       /// Ask GPT to make its guess ///
@@ -76,7 +75,7 @@ export const gptGuessingGameRouter = createTRPCRouter({
       const guess = await prisma.gptGuessGameGuess.create({
         data: {
           gameId: game.id,
-          gptGuess: gptGuess && /\w/.test(gptGuess) ? gptGuess : '<blank>',
+          gptGuess: gptGuess && /\w/.test(gptGuess) ? gptGuess : "<blank>",
           playerGuess: input.guess,
         },
       });

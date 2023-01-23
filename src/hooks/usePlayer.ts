@@ -27,7 +27,6 @@ export const useUpsertPlayer = () => {
   const player = usePlayer();
   const playerId = player?.id;
 
-
   const router = useRouter();
   const choices = api.player.nameChoices.useQuery(undefined, {
     refetchOnWindowFocus: false,

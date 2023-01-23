@@ -123,7 +123,9 @@ rounded           bg-emerald-600 p-4 shadow-2xl
           teachers and students, and hoping to get to know you and your Ed Tech
           pain, so that we can support a better Ed Tech future.
         </p>
-        <Link href="/games"><p>Click here to view the games that we have!</p></Link>
+        <Link href="/games">
+          <p>Click here to view the games that we have!</p>
+        </Link>
       </div>
       <div className="my-12">
         <ContactForm />
