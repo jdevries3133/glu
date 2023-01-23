@@ -81,6 +81,7 @@ export default function GptGuessPage() {
                     value={word}
                     required
                     autoFocus
+                    autoComplete="off"
                     className="form-input"
                     id="word"
                     name="random word"
@@ -112,6 +113,7 @@ export default function GptGuessPage() {
                     onChange={handleWordChange}
                     required
                     autoFocus
+                    autoComplete="off"
                     className="form-input"
                     id="nextGuess"
                     placeholder="Your next guess"
