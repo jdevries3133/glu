@@ -27,7 +27,6 @@ export const useUpsertPlayer = () => {
   const player = usePlayer();
   const playerId = player?.id;
 
-  console.log({ playerId });
 
   const router = useRouter();
   const choices = api.player.nameChoices.useQuery(undefined, {
@@ -40,7 +39,7 @@ export const useUpsertPlayer = () => {
     if (typeof router.query.next === "string") {
       router.push(router.query.next).catch(rejection);
     } else {
-      router.push("/g").catch(rejection);
+      router.push("/games").catch(rejection);
     }
   }
 

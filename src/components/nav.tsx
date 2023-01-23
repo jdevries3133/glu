@@ -22,7 +22,7 @@ export const DefaultHeader = () => (
   </header>
 );
 
-const BrandingContent = () => (
+export const BrandingContent = () => (
   <>
     <div className="relative my-2 h-12 w-12 sm:h-24 sm:w-24">
       <Image alt="glu logo" fill src="/static/glue.png" />

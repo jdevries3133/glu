@@ -5,6 +5,7 @@
  *
  * Name options will need to be stored to prevent arbitrary inputs.
  */
+import { GameType } from "@prisma/client";
 import type { PlayerNameChoice } from "@prisma/client";
 import { getRandomSillyName } from "utils/getRandomSillyName";
 import { z } from "zod";
@@ -30,7 +31,7 @@ export const playerRouter = createTRPCRouter({
       if (!id) {
         return null;
       }
-      return ctx.prisma.gamePlayer.findUnique({ where: { id } });
+      return ctx.prisma.player.findUnique({ where: { id } });
     }),
   create: publicProcedure
     .input(
@@ -90,4 +91,16 @@ export const playerRouter = createTRPCRouter({
     }
     return Promise.all(nameChoices);
   }),
+  createGame: publicProcedure
+    .input(
+      z.object({
+        gameType: z.nativeEnum(GameType),
+        playerId: z.string(),
+      })
+    )
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.game.create({
+        data: { playerId: input.playerId, type: input.gameType },
+      });
+    }),
 });

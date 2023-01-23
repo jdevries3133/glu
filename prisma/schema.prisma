@@ -74,10 +74,10 @@ model VerificationToken {
 // --------------------- "Quick Game" data  -----------------------------------
 
 /// Possibly anonymous, possible (in the future) related to a student account.
-model GamePlayer {
-  id       String     @id @default(cuid())
-  name     String?
-  GamePlay GamePlay[]
+model Player {
+  id   String  @id @default(cuid())
+  name String?
+  Game Game[]
 }
 
 /// This is just a store of name permutations with no ownership
@@ -90,12 +90,19 @@ enum GameType {
   GPT_GUESS
 }
 
-model GamePlay {
-  id   String   @id @default(cuid())
-  type GameType
+enum GameState {
+  INCOMPLETE
+  COMPLETE
+}
+
+model Game {
+  id        String    @id @default(cuid())
+  type      GameType
+  state     GameState @default(INCOMPLETE)
+  createdAt DateTime  @default(now())
 
   playerId          String
-  player            GamePlayer          @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  player            Player              @relation(fields: [playerId], references: [id], onDelete: Cascade)
   GptGuessGameScore GptGuessGameScore?
   GptGuessGameGuess GptGuessGameGuess[]
 }
@@ -103,18 +110,19 @@ model GamePlay {
 // *** GPT Guess Game Data ***
 
 model GptGuessGameScore {
-  gameId String   @unique
-  game   GamePlay @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  gameId String @unique
+  game   Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
 
   numGuesses          Int
   playDurationSeconds Int
 }
 
 model GptGuessGameGuess {
-  id          String @id @default(cuid())
+  id          String   @id @default(cuid())
   playerGuess String
   gptGuess    String
+  createdAt   DateTime @default(now())
 
   gameId String
-  game   GamePlay @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  game   Game   @relation(fields: [gameId], references: [id], onDelete: Cascade)
 }
