@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm run lint && npm run test -- --run",
     "fmt": "prettier -w src",
+    "dr": "pscale dr create glu dev",
 
     "gptGame:help": "echo '!! Note: these scripts require installation of python dependencies !!'",
     "gptGame:prep": "source .env; openai tools fine_tunes.prepare_data -f ./src/gptGuessingGame/trainingData.jsonl",
