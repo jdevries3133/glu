@@ -15,11 +15,10 @@
     "check": "npm run typecheck && npm run lint && npm run test -- --run",
     "fmt": "prettier -w src",
     "dr": "pscale dr create glu dev",
-
-    "gptGame:help": "echo '!! Note: these scripts require installation of python dependencies !!'",
-    "gptGame:prep": "source .env; openai tools fine_tunes.prepare_data -f ./src/gptGuessingGame/trainingData.jsonl",
-    "gptGame:train": "source .env; openai api fine_tunes.create -m ada --n_epochs 1 -t ./src/gptGuessingGame/trainingData_prepared.jsonl",
-    "gptGame:status": "source .env; openai api fine_tunes.cancel -i "
+    "gptGame:clean": "rm src/gptGuessingGame/*.jsonl",
+    "gptGame:generate": "python3 ./src/gptGuessingGame/to_jsonl.py",
+    "gptGame:prep": "openai tools fine_tunes.prepare_data -q -f ./src/gptGuessingGame/trainingData.jsonl",
+    "gptGame:train": "openai api fine_tunes.create -t \"./src/gptGuessingGame/trainingData_prepared.jsonl\""
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",

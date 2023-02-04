@@ -70,7 +70,7 @@ export const gptGuessingGameRouter = createTRPCRouter({
 
       /// Ask GPT to make its guess ///
       const gptGuess = await gptGameCompleter(
-        `What word is half way between ${lastGuess.gptGuess} and ${lastGuess?.playerGuess}?`
+        `What is halfway between a ${lastGuess.gptGuess} and a ${lastGuess?.playerGuess}?`
       );
       const guess = await prisma.gptGuessGameGuess.create({
         data: {

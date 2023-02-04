@@ -2,16 +2,7 @@
  * Note: Ada is the cheapest and fastest model; see
  * https://beta.openai.com/docs/models/gpt-3
  *
- * I have created some fine-tuned models:
- *
- * - curie:ft-personal-2023-01-23-00-40-24
- *   - trained from initial data set
- *   - maybe a good option if Ada is too dumb
- *   - 4 epochs (too many, I guess)
- * - ada:ft-personal-2023-01-23-00-50-59
- *   - Ada version from initial data set
- *   - 4 epochs (too many, I guess)
- *
+ * I'm using fine-tuned model from the training data. See ../gptGuessingGame/README.md
  */
 
 import { Configuration, OpenAIApi } from "openai";
@@ -35,6 +26,7 @@ export const completerFactory =
   };
 
 export const gptGameCompleter = completerFactory(
-  "curie:ft-personal-2023-01-23-00-40-24",
-  {maxTokens: 10}
+  // "curie:ft-personal-2023-01-23-00-40-24",
+  "curie:ft-personal-2023-01-23-08-06-05",
+  {maxTokens: 5}
 );
