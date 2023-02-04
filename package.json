@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "concurrently --names 'db,next' 'npm run dev:pscale' 'npm run dev:next'",
+    "dev": "concurrently --names 'db,next' 'npm run dev:pscale' 'npm run dev:next' 'npm run dev:prisma'",
     "test": "vitest",
     "dev:pscale": "source .env; pscale connect glu $PDB_BRANCH --port 3309",
     "dev:next": "next dev",
+    "dev:prisma": "prisma studio",
     "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint -f unix && prettier --check src",
