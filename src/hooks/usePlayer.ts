@@ -9,9 +9,14 @@ export const usePlayer = () => {
   const playerId = envIsBrowser()
     ? window.localStorage.getItem("playerId")
     : null;
-  const player = api.player.get.useQuery({
-    id: playerId,
-  });
+  const player = api.player.get.useQuery(
+    {
+      id: playerId || "",
+    },
+    {
+      enabled: playerId !== null,
+    }
+  );
 
   if (!playerId && envIsBrowser()) {
     router
