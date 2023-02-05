@@ -63,7 +63,7 @@ export const _randomGuesser = completerFactory(
   "text-davinci-003",
   // 'text-babbage-001',
   {
-    maxTokens: 4,
+    maxTokens: 5,
   }
 );
 

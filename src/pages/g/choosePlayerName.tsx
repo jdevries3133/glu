@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "components/loadingSpinner";
+import { InlineSpinner, LoadingSpinner } from "components/loadingSpinner";
 import { useUpsertPlayer } from "hooks/usePlayer";
 
 export default function NewPlayer() {
@@ -25,7 +25,7 @@ export default function NewPlayer() {
         <form
           onSubmit={(e) => e.preventDefault()}
           className="flex min-w-full flex-col gap-2 rounded-xl border
-        border-gray-500 p-2"
+        border-gray-500 p-2 h-96"
         >
           <button onClick={reset} className="form-input rounded-xl bg-blue-100">
             Refresh Names
@@ -41,7 +41,7 @@ export default function NewPlayer() {
                 onClick={() => doCreate({ id, value })}
                 key={id || i}
               >
-                {isLoading ? <LoadingSpinner /> : value}
+                {isLoading ? <InlineSpinner /> : value}
               </button>
             ))}
         </form>
