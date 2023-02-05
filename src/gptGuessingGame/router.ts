@@ -106,7 +106,8 @@ export const gptGuessingGameRouter = createTRPCRouter({
         });
 
         /// Check for game completion ///
-        const gameComplete = gptGuess === guess.playerGuess;
+        // const gameComplete = gptGuess === guess.playerGuess;
+        const gameComplete = true;
 
         if (gameComplete) {
           // mark the game complete
@@ -118,7 +119,7 @@ export const gptGuessingGameRouter = createTRPCRouter({
           });
           // create the score
           const numGuesses = await prisma.gptGuessGameGuess.count({
-            where: { game: game },
+            where: { gameId: game.id },
           });
           const duration = Math.floor(
             (new Date().getTime() - game.createdAt.getTime()) / 1000
