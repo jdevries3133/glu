@@ -48,10 +48,7 @@ const cleanGuess = (guess?: string): string => {
 };
 
 const _gptGameCompleter = completerFactory(
-  // "curie:ft-personal-2023-01-23-00-40-24",
-  // "curie:ft-personal-2023-01-23-08-06-05",
-  "text-davinci-003",
-  // 'text-babbage-001',
+  process.env.NODE_ENV === "development" ? "ada" : "text-davinci-003",
   { maxTokens: 5 }
 );
 
@@ -60,8 +57,7 @@ export const gptGameCompleter = async (guess: string): Promise<string> => {
 };
 
 export const _randomGuesser = completerFactory(
-  "text-davinci-003",
-  // 'text-babbage-001',
+  process.env.NODE_ENV === "development" ? "ada" : "text-davinci-003",
   {
     maxTokens: 5,
   }

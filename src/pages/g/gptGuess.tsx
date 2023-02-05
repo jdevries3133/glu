@@ -48,7 +48,11 @@ export default function GptGuessPage() {
     setWord(e.target.value);
   };
 
-  if (game.data?.game.state === "COMPLETE") {
+  if (
+    !game.isLoading &&
+    !game.isRefetching &&
+    game.data?.game.state === "COMPLETE"
+  ) {
     router.push("/g/gptGuessComplete").catch(rejection);
   }
 
@@ -57,9 +61,9 @@ export default function GptGuessPage() {
       <GameHeader />
       <div className="flex flex-col items-center justify-center">
         <div
-          className={`via-magenta-200 m-4 flex min-h-[70vh] sm:w-96 flex-col gap-8 rounded bg-gradient-to-tl from-yellow-300
-               to-green-100 bg-size-200
-               bg-pos-0 p-4 shadow transition-all duration-300 hover:shadow-none
+          className={`via-magenta-200 m-4 flex min-h-[70vh] flex-col gap-8 rounded bg-gradient-to-tl from-yellow-300 to-green-100
+               bg-size-200 bg-pos-0
+               p-4 shadow transition-all duration-300 hover:shadow-none sm:w-96
                ${isLoading ? "bg-pos-100" : ""}
           `}
         >
@@ -102,25 +106,31 @@ export default function GptGuessPage() {
               </>
             ) : (
               <>
-                <p className="mt-5 h-16 text-lg text-center">
+                <p className="mt-5 h-16 text-center text-lg">
                   What is half way in-between
                 </p>
-                <div className="sm:flex sm:justify-around mb-4">
+                <div className="mb-4 sm:flex sm:justify-around">
                   <div>
-                    <p className="inline pr-4 sm:pr-0 sm:block text-center sm:text-4xl">👋🏽</p>
+                    <p className="inline pr-4 text-center sm:block sm:pr-0 sm:text-4xl">
+                      👋🏽
+                    </p>
                     <p className="inline sm:block">
                       Your guess: <PlayerGuess loading={isLoading} />
                     </p>
                   </div>
                   <div>
-                    <p className="inline sm:block pr-4 sm:pr-0 text-center sm:text-4xl">🤖</p>
-                    <p className="font-mono inline sm:block">
+                    <p className="inline pr-4 text-center sm:block sm:pr-0 sm:text-4xl">
+                      🤖
+                    </p>
+                    <p className="inline font-mono sm:block">
                       AI Guess: <GptGuess loading={isLoading} />
                     </p>
                   </div>
                 </div>
                 <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
-                  <label htmlFor="nextGuess" className="text-sm text-gray-800">Next Guess</label>
+                  <label htmlFor="nextGuess" className="text-sm text-gray-800">
+                    Next Guess
+                  </label>
                   <input
                     type="text"
                     value={word}

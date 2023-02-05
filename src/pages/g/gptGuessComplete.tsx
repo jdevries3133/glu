@@ -10,14 +10,13 @@ export default function GptGameComplete() {
     {
       playerId: player?.id ?? "",
     },
-    { enabled: player !== null }
+    {
+      enabled: player !== null,
+    }
   );
   const mutation = api.gptGuess.resetGame.useMutation();
 
-  if (
-    score.isSuccess &&
-    (score.data === null || score.data.game.state === "INCOMPLETE")
-  ) {
+  if (!score.isLoading && !score.data) {
     router.push("/g/gptGuess").catch(rejection);
   }
 
@@ -29,7 +28,10 @@ export default function GptGameComplete() {
       <pre>{JSON.stringify(score.data, null, 2)}</pre>
       {player !== null && (
         <button
-          onClick={() => mutation.mutate({ playerId: player.id })}
+          onClick={async () => {
+            await mutation.mutateAsync({ playerId: player.id });
+            await router.push("/g/gptGuess");
+          }}
           className="rounded bg-green-100 p-2"
         >
           Play Again
