@@ -63,6 +63,8 @@ export const gptGuessingGameRouter = createTRPCRouter({
     )
     .mutation(
       async ({ ctx: { prisma }, input }): Promise<GptGuessGameGuess> => {
+        /// clean the input ///
+        input.guess = input.guess.trim().toLowerCase();
         /// Select the current game ///
         const game = await prisma.game.findUnique({
           where: { id: input.gameId },

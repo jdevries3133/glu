@@ -46,7 +46,7 @@ export const ContactForm = () => {
           Tech woes and start building out solutions for you!
         </p>
       </div>
-      <div className="w-48">
+      <div className="flex flex-col">
         <label htmlFor="name" className="font-bold">
           Your Name
         </label>
