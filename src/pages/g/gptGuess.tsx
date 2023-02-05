@@ -5,15 +5,23 @@ import { LoadingSpinner } from "components/loadingSpinner";
 import { usePlayer } from "hooks/usePlayer";
 import { api } from "utils/api";
 import { invariant } from "utils/invariant";
+import { useRouter } from "next/router";
+import { rejection } from "utils/rejection";
 
 export default function GptGuessPage() {
   const [word, setWord] = useState("");
   const player = usePlayer();
+  const router = useRouter();
 
   const utils = api.useContext();
-  const game = api.gptGuess.getCurrentGame.useQuery({
-    playerId: player?.id ?? null,
-  });
+  const game = api.gptGuess.getCurrentGame.useQuery(
+    {
+      playerId: player?.id ?? "",
+    },
+    {
+      enabled: player !== null,
+    }
+  );
   const guess = api.gptGuess.makeGuess.useMutation();
 
   const isLoading = !player || !game.data || guess.isLoading;
@@ -33,6 +41,10 @@ export default function GptGuessPage() {
     setWord(e.target.value);
   };
 
+  if (game.data?.game.state === "COMPLETE") {
+    router.push("/g/gptGuessComplete").catch(rejection);
+  }
+
   return (
     <>
       <GameHeader />
@@ -49,20 +61,20 @@ export default function GptGuessPage() {
               Team up with advanced AI and try to top the leaderboards!
             </p>
           </div>
-          <div className="block rounded bg-yellow-200 shadow prose p-4">
+          <div className="prose block rounded bg-yellow-200 p-4 shadow">
             <h2 className="block">Warning for Teachers!</h2>
             <p>
               This game is not ready to share with your students. It genuinely
-              does talk to OpenAI's GPT on the backend, and I haven't been able
-              to fine tune the model to work, in general, and I've also
-              witnessed it using inappropriate language very frequently, which
-              is pretty weird!!
+              does talk to OpenAIapos;s GPT on the backend, and I havenapos;t
+              been able to fine tune the model to work, in general, and Iapos;ve
+              also witnessed it using inappropriate language very frequently,
+              which is pretty weird!!
             </p>
             <p>
               OpenAI have several different models to use at different price
               points as well as a lot of options for fine-tuning the models they
               have, so I think I can get this game to work eventually, but it
-              definitely doesn't work as intended right now!
+              definitely doesnapos;t work as intended right now!
             </p>
           </div>
           <div
@@ -70,19 +82,6 @@ export default function GptGuessPage() {
               isLoading ? "justify-center" : ""
             }`}
           >
-            {guess.data?.gptFailed && (
-              <div className="prose text-sm">
-                <p className="inline rounded bg-red-100 p-1 text-red-800">
-                  Oops! You&apos;re smarter than GPT!
-                </p>
-                <div className="mt-2 rounded bg-green-100 p-1 text-green-900">
-                  <p>
-                    Try again with a different word. GPT left us on read after
-                    that last guess - how rude!
-                  </p>
-                </div>
-              </div>
-            )}
             {isLoading ? (
               <LoadingSpinner />
             ) : (game.data?.numGuesses ?? 0) === 0 ? (
@@ -151,9 +150,12 @@ export default function GptGuessPage() {
 
 const PlayerGuess = () => {
   const player = usePlayer();
-  const game = api.gptGuess.getCurrentGame.useQuery({
-    playerId: player?.id ?? null,
-  });
+  const game = api.gptGuess.getCurrentGame.useQuery(
+    {
+      playerId: player?.id ?? "",
+    },
+    { enabled: player !== null }
+  );
 
   return (
     <>
@@ -165,12 +167,18 @@ const PlayerGuess = () => {
     </>
   );
 };
+
 const GptGuess = () => {
   const player = usePlayer();
 
-  const game = api.gptGuess.getCurrentGame.useQuery({
-    playerId: player?.id ?? null,
-  });
+  const game = api.gptGuess.getCurrentGame.useQuery(
+    {
+      playerId: player?.id ?? "",
+    },
+    {
+      enabled: player !== null,
+    }
+  );
   return (
     <>
       {game.isLoading || game.isRefetching ? (

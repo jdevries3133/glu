@@ -75,9 +75,10 @@ model VerificationToken {
 
 /// Possibly anonymous, possible (in the future) related to a student account.
 model Player {
-  id   String  @id @default(cuid())
-  name String?
-  Game Game[]
+  id                String              @id @default(cuid())
+  name              String?
+  Game              Game[]
+  PlayerCurrentGame PlayerCurrentGame[]
 }
 
 /// This is just a store of name permutations with no ownership
@@ -105,6 +106,15 @@ model Game {
   player            Player              @relation(fields: [playerId], references: [id], onDelete: Cascade)
   GptGuessGameScore GptGuessGameScore?
   GptGuessGameGuess GptGuessGameGuess[]
+  PlayerCurrentGame PlayerCurrentGame[]
+}
+
+model PlayerCurrentGame {
+  playerId  String   @id
+  player    Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  gameId    String
+  game      Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
 
 // *** GPT Guess Game Data ***
