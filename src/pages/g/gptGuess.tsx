@@ -61,22 +61,6 @@ export default function GptGuessPage() {
               Team up with advanced AI and try to top the leaderboards!
             </p>
           </div>
-          <div className="prose block rounded bg-yellow-200 p-4 shadow">
-            <h2 className="block">Warning for Teachers!</h2>
-            <p>
-              This game is not ready to share with your students. It genuinely
-              does talk to OpenAIapos;s GPT on the backend, and I havenapos;t
-              been able to fine tune the model to work, in general, and Iapos;ve
-              also witnessed it using inappropriate language very frequently,
-              which is pretty weird!!
-            </p>
-            <p>
-              OpenAI have several different models to use at different price
-              points as well as a lot of options for fine-tuning the models they
-              have, so I think I can get this game to work eventually, but it
-              definitely doesnapos;t work as intended right now!
-            </p>
-          </div>
           <div
             className={`flex flex-grow flex-col items-center gap-8 ${
               isLoading ? "justify-center" : ""
