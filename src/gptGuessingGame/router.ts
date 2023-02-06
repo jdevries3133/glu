@@ -106,8 +106,7 @@ export const gptGuessingGameRouter = createTRPCRouter({
         });
 
         /// Check for game completion ///
-        // const gameComplete = gptGuess === guess.playerGuess;
-        const gameComplete = true;
+        const gameComplete = gptGuess === guess.playerGuess;
 
         if (gameComplete) {
           // mark the game complete
